@@ -11,12 +11,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 
+import javax.servlet.Filter;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:application-dev.properties")
+@PropertySource("classpath:application-default.properties")
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
 public class AppConfig {
@@ -34,6 +36,14 @@ public class AppConfig {
         config.setUsername(username);
         config.setPassword(password);
         return new HikariDataSource(config);
+    }
+
+    @Bean
+    public Filter characterEncodingFilter() {
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+        return characterEncodingFilter;
     }
 
     @Bean

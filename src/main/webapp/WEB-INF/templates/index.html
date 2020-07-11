@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -44,6 +45,8 @@
                         <th>#</th>
                         <th>username</th>
                         <th>password</th>
+                        <th>name</th>
+                        <th>email</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,6 +54,8 @@
                         <th th:text="${iState.index + 1}"></th>
                         <th th:text="${member.username}"></th>
                         <th th:text="${member.password}"></th>
+                        <th th:text="${member.name}"></th>
+                        <th th:text="${member.email}"></th>
                     </tr>
                 </tbody>
             </table>

@@ -16,12 +16,12 @@ public class MemberDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @PostConstruct
-    void init() {
-        jdbcTemplate.update("create table member(id int auto_increment, username varchar(255) not null," +
-                "password varchar(255) not null, primary key(id))");
-        jdbcTemplate.update("insert into member(username, password) values('jusekyung','1234')");
-    }
+//    @PostConstruct
+//    void init() {
+//        jdbcTemplate.update("create table member(id int auto_increment, username varchar(255) not null," +
+//                "password varchar(255) not null, primary key(id))");
+//        jdbcTemplate.update("insert into member(username, password) values('jusekyung','1234')");
+//    }
 
     public void insert(String username, String password, String name, String email) {
         jdbcTemplate.update("insert into member(username, password, name, email) values(?,?,?,?);",
