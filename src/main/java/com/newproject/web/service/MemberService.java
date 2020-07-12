@@ -14,8 +14,8 @@ public class MemberService {
     private MemberDao memberDao;
 
     @Transactional
-    public void insert(String username, String password, String name, String email) {
-        memberDao.insert(username, password, name, email);
+    public int insert(String username, String password, String name, String email) {
+        return memberDao.insert(username, password, name, email);
     }
 
     public List<Member> list() {
