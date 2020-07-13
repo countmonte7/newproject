@@ -1,5 +1,7 @@
 com.newproject.web.SimpleFilter=javax.servlet.annotation.WebFilter
 com.newproject.web.SimpleServlet=javax.servlet.annotation.WebServlet
 com.newproject.web.config.spring.AppConfig=org.springframework.stereotype.Component
+com.newproject.web.config.spring.MessageConverterConfig=org.springframework.stereotype.Component
 com.newproject.web.config.spring.MvcConfig=org.springframework.stereotype.Component
+com.newproject.web.controller.MainController=org.springframework.stereotype.Component
 com.newproject.web.controller.MemberController=org.springframework.stereotype.Component

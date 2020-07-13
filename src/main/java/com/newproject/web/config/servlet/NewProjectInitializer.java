@@ -1,6 +1,7 @@
 package com.newproject.web.config.servlet;
 
 import com.newproject.web.config.spring.AppConfig;
+import com.newproject.web.config.spring.MessageConverterConfig;
 import com.newproject.web.config.spring.MvcConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -18,6 +19,7 @@ public class NewProjectInitializer implements WebApplicationInitializer {
                 new AnnotationConfigWebApplicationContext();
         rootContext.register(AppConfig.class);
         rootContext.register(MvcConfig.class);
+        rootContext.register(MessageConverterConfig.class);
 
         container.addListener(new ContextLoaderListener(rootContext));
 

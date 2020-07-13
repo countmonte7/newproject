@@ -18,6 +18,11 @@ public class Member {
     private String name;
     private String email;
 
+    public Member(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public Member(ResultSet resultSet) {
         try {
             this.id = resultSet.getInt(1);

@@ -21,4 +21,8 @@ public class MemberService {
     public List<Member> list() {
         return  memberDao.list();
     }
+
+    public int login(String username, String password) {
+        return memberDao.login(username, password);
+    }
 }

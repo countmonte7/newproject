@@ -12,6 +12,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
 
 import javax.servlet.Filter;
@@ -70,6 +71,5 @@ public class AppConfig {
     public MemberController memberController(MemberService service) {
         return new MemberController(service);
     }
-
 
 }

@@ -4,6 +4,7 @@ import com.newproject.web.entity.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -50,6 +51,19 @@ public class MemberDao {
                 (resultSet, i) -> new Member(resultSet));
     }
 
-
+    public int login(String username, String password) {
+        try{
+            String result = jdbcTemplate.queryForObject("select password from member where username=?",
+                    new Object[]{username}, String.class);
+            if(result != null && result != "") {
+                if(password.equals(result)) {
+                    return  1;
+                }
+            }
+        }catch (EmptyResultDataAccessException e) {
+            return 0;
+        }
+        return -1;
+    }
 
 }
