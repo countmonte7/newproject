@@ -1,8 +1,11 @@
 package com.newproject.web.config.spring;
 
 import com.newproject.web.controller.MemberController;
+import com.newproject.web.controller.StudyController;
 import com.newproject.web.dao.MemberDao;
+import com.newproject.web.dao.StudyDao;
 import com.newproject.web.service.MemberService;
+import com.newproject.web.service.StudyService;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
@@ -71,5 +74,14 @@ public class AppConfig {
     public MemberController memberController(MemberService service) {
         return new MemberController(service);
     }
+
+    @Bean
+    public StudyDao studyDao(JdbcTemplate jdbcTemplate) {return new StudyDao(jdbcTemplate);}
+
+    @Bean
+    public StudyService studyService(StudyDao studyDao) {return new StudyService(studyDao);}
+
+    @Bean
+    public StudyController studyController(StudyService studyService) {return new StudyController(studyService);}
 
 }

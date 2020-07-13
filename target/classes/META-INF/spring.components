@@ -5,3 +5,4 @@ com.newproject.web.config.spring.MessageConverterConfig=org.springframework.ster
 com.newproject.web.config.spring.MvcConfig=org.springframework.stereotype.Component
 com.newproject.web.controller.MainController=org.springframework.stereotype.Component
 com.newproject.web.controller.MemberController=org.springframework.stereotype.Component
+com.newproject.web.controller.StudyController=org.springframework.stereotype.Component
