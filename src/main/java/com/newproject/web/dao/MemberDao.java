@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
-import javax.annotation.PostConstruct;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +17,7 @@ import java.util.List;
 @Slf4j
 public class MemberDao {
     private JdbcTemplate jdbcTemplate;
+
     @Autowired
     public MemberDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -57,6 +57,7 @@ public class MemberDao {
                     new Object[]{username}, String.class);
             if(result != null && result != "") {
                 if(password.equals(result)) {
+
                     return  1;
                 }
             }

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -52,7 +53,7 @@ public class MemberController {
 
     @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
     @ResponseBody
-    public HashMap<String, String> login(@RequestBody Member member) {
+    public HashMap<String, String> login(@RequestBody Member member, HttpServletRequest request) {
         String username = member.getUsername();
         String password = member.getPassword();
 //        log.info(username +"/" + password);
@@ -65,9 +66,23 @@ public class MemberController {
         }else if(result == -1) {
             map.put("result", "passwordIncorrect");
             return map;
-        }
+        }else if(result == 1) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("member", member);
             map.put("result", "success");
+        }
         return map;
     }
 
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        PrintWriter writer = response.getWriter();
+        if(session.getAttribute("member") != null) {
+            session.invalidate();
+        }else {
+            writer.println("<script>alert('로그인된 계정이 아닙니다.');location.reload(true);</script>");
+        }
+        return "redirect:main";
+    }
 }

@@ -11,14 +11,17 @@
             <li class="nav-item active">
                 <a class="nav-link" href="main.html">메인페이지 <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" th:if="${session.member} == null">
                 <a class="nav-link" href="login.html">로그인</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" th:if="${session.member} == null">
                 <a class="nav-link" href="index.html">회원가입</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="createStudy.html" tabindex="-1" aria-disabled="true">스터디 만들기</a>
+            </li>
+            <li class="nav-item" th:if="${session.member} != null">
+                <a class="nav-link" href="logout.html">로그아웃</a>
             </li>
         </ul>
     </div>
