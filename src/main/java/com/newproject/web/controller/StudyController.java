@@ -27,4 +27,9 @@ public class StudyController {
                 studyDto.getRegisterDate(), studyDto.getNumOfPeople());
         return 0;
     }
+
+    @RequestMapping("/studyList")
+    public String studyList() {
+        return "studyList";
+    }
 }

@@ -25,4 +25,8 @@ public class MemberService {
     public int login(String username, String password) {
         return memberDao.login(username, password);
     }
+
+    public Member getUserInfo(String username) {
+        return memberDao.getUserInfo(username);
+    }
 }

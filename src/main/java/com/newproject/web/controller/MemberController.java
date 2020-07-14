@@ -56,7 +56,6 @@ public class MemberController {
     public HashMap<String, String> login(@RequestBody Member member, HttpServletRequest request) {
         String username = member.getUsername();
         String password = member.getPassword();
-//        log.info(username +"/" + password);
         HashMap<String, String> map = new HashMap<String, String>();
         int result = memberService.login(username, password);
         log.info("result : " + result);
@@ -84,5 +83,17 @@ public class MemberController {
             writer.println("<script>alert('로그인된 계정이 아닙니다.');location.reload(true);</script>");
         }
         return "redirect:main";
+    }
+
+    @RequestMapping("/openMyPage")
+    public ModelAndView getUserInfo(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        ModelAndView mv = new ModelAndView("/myPage");
+        if(session!=null) {
+            Member member = (Member)session.getAttribute("member");
+            Member memberInfo = memberService.getUserInfo(member.getUsername());
+            mv.addObject("member", memberInfo);
+        }
+        return mv;
     }
 }

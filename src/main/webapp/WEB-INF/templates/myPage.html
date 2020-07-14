@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>Title</title>
 </head>
 <body>
-
+    <head th:replace="navigation :: nav"></head>
+    <div class="row justify-content-center">
+        <div class="col-8">
+        <table id="myPageTable" class="table table-striped" style="margin:10px 10px 10px 10px;">
+            <thead>
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>이메일주소</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="memberInfo : ${member}">
+                    <td th:text="${memberInfo.username}"></td>
+                    <td th:text="${memberInfo.name}"></td>
+                    <td th:text="${memberInfo.email}"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
 </body>
 </html>

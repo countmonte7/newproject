@@ -17,8 +17,14 @@
             <li class="nav-item" th:if="${session.member} == null">
                 <a class="nav-link" href="index.html">회원가입</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" th:if="${session.member}!=null">
                 <a class="nav-link" href="createStudy.html" tabindex="-1" aria-disabled="true">스터디 만들기</a>
+            </li>
+            <li class="nav-item" th:if="${session.member}!=null">
+                <a class="nav-link" href="studyList.html" tabindex="-1" aria-disabled="true">스터디 찾기</a>
+            </li>
+            <li class="nav-item" th:if="${session.member} != null">
+                <a class="nav-link" href="openMyPage.html">마이페이지</a>
             </li>
             <li class="nav-item" th:if="${session.member} != null">
                 <a class="nav-link" href="logout.html">로그아웃</a>

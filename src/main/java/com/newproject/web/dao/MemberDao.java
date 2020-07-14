@@ -18,6 +18,8 @@ import java.util.List;
 public class MemberDao {
     private JdbcTemplate jdbcTemplate;
 
+    private Member member;
+
     @Autowired
     public MemberDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -67,4 +69,26 @@ public class MemberDao {
         return -1;
     }
 
+
+    public Member getUserInfo(String username) {
+        return jdbcTemplate.query("select * from member where username=?", new PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement preparedStatement) throws SQLException {
+                preparedStatement.setString(1, username);
+            }
+        }, new ResultSetExtractor<Member>() {
+            @Override
+            public Member extractData(ResultSet resultSet) throws SQLException, DataAccessException {
+                if(resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    String username = resultSet.getString("username");
+                    String password = resultSet.getString("password");
+                    String name = resultSet.getString("name");
+                    String email = resultSet.getString("email");
+                    member = new Member(id, username, password, name, email);
+                }
+                return member;
+            }
+        });
+    }
 }
