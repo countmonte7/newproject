@@ -10,7 +10,7 @@
   <properties>
     <maven.compiler.source>12</maven.compiler.source>
     <maven.compiler.target>12</maven.compiler.target>
-      <tomcat.version>9.0.37</tomcat.version>
+      <tomcat.version>10.0.4</tomcat.version>
   </properties>
  
   <dependencies>
